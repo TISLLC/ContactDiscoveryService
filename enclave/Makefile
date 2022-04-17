@@ -331,7 +331,7 @@ $(CDS_BENCHMARK_LIB): $(CDS_BENCHMARK_HARDENED)
 
 ## Reproducible enclave build via debian package
 
-MAKETARGET ?= bindgen debuild sign
+MAKETARGET ?= bindgen debuild
 
 docker: DOCKER_EXTRA=$(shell [ -L build ] && P=$$(readlink build) && echo -v $$P/:$$P )
 docker:
