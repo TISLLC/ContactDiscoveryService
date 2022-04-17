@@ -74,8 +74,8 @@ public class IntelClient {
     this.apiKey = apiKey;
     this.acceptGroupOutOfDate = acceptGroupOutOfDate;
 
-    this.signatureRevocationListBaseUri = URI.create(baseUri).resolve("/attestation/sgx/v3/sigrl/");
-    this.quoteSignatureUri = URI.create(baseUri).resolve("/attestation/sgx/v3/report");
+    this.signatureRevocationListBaseUri = URI.create(baseUri).resolve("attestation/v3/sigrl/");
+    this.quoteSignatureUri = URI.create(baseUri).resolve("attestation/v3/report");
   }
 
   public byte[] getSignatureRevocationList(long gid) throws IOException, InterruptedException {
@@ -87,6 +87,8 @@ public class IntelClient {
 
     final HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
+    logger.info("URL: " + request.uri().toString());
+    logger.info("Api Key: " + apiKey);
     if (response.statusCode() < 200 || response.statusCode() >= 300) {
       throw new IOException("Failed to get signature revocation list (HTTP/" + response.statusCode() + ")");
     }
