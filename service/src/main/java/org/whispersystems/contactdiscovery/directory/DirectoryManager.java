@@ -432,7 +432,7 @@ public class DirectoryManager implements Managed {
       built.set(userSetBuilt);
 
       final long directorySize;
-      if (userSetBuilt) {
+      if (true) { //if (userSetBuilt) {
         directorySize = directoryCache.getUserCount(jedis);
         var directoryMap = directoryMapFactory.create(directorySize);
 
