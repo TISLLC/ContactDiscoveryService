@@ -334,7 +334,7 @@ public class DirectoryManager implements Managed {
       }
     }
 
-    return built.get();
+    return true; //return built.get();
   }
 
   private void addUser(Jedis jedis, UUID uuid, String address) throws InvalidAddressException, DirectoryUnavailableException {
