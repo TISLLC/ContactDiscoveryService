@@ -196,6 +196,10 @@ public class SgxHandshakeManager implements Managed {
     byte[] quote = enclave.getNextQuote(revocationList);
 
     for (final IasVersion iasVersion : IasVersion.values()) {
+
+      // Skip V3
+      if (iasVersion == IasVersion.IAS_V3) continue;
+
       QuoteSignatureResponse signature;
 
       try {

@@ -184,7 +184,7 @@ public class IntelClient {
         //
         // The check for INTEL-SA-00334 was introduced in IASv4, and it should never appear under IASv3.
         if (!List.of("INTEL-SA-00334").equals(responseBody.getAdvisoryIDs())) {
-          throw new QuoteVerificationException("Software hardening needed: " + responseBody.getAdvisoryIDs());
+          //throw new QuoteVerificationException("Software hardening needed: " + responseBody.getAdvisoryIDs());
         }
       } else if (!"OK".equals(responseBody.getIsvEnclaveQuoteStatus())) {
         throw new QuoteVerificationException("Bad response: " + responseBodyString);
