@@ -8,13 +8,12 @@ services:
     devices:
       - /dev/sgx/enclave
       - /dev/sgx/provision
-      - /dev/isgx
-    ports:
-      - 9090:9090
     volumes:
       - .:/opt/contact_discovery_service
       - ../CDS_config.yml:/opt/CDS_config.yml
-      - /var/run/aesmd/aesm.socket:/var/run/aesmd/aesm.socket
+      - /dev/sgx:/dev/sgx
+      - /dev/isgx:/dev/isgx
+      - /var/run/aesmd:/var/run/aesmd
     network_mode: "host"
     command: sh -c ./start.sh
     working_dir: /opt/contact_discovery_service
